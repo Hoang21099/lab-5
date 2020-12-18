@@ -3,6 +3,7 @@ package com.example.lab5_bt1;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         btnCombineCode = (Button) findViewById(R.id.btn_combine_code);
     }
 
+    // Bai tap 1
     private void handleClickAnimationXml(Button btn, int animId)
     {
         //HandleClickAnimationXML
@@ -84,6 +86,46 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    // Bai tap 2
+    private void handleClickAnimationCode(Button btn, final Animation animation) {
+
+        // Handle onclickListenner to start animation
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ivUitLogo.startAnimation(animation);
+            }
+        });
+
+    }
+
+    private Animation initFadeInAnimation(){
+        AlphaAnimation animation = new AlphaAnimation(0f,1f);
+        animation.setDuration(3000);
+        animation.setFillAfter(true);
+        animation.setAnimationListener(animationListener);
+        return animation;
+    }
+
+    private Animation initFadeOutAnimation(){
+        AlphaAnimation animation = new AlphaAnimation(1f,0f);
+        animation.setDuration(1000);
+        animation.setFillAfter(true);
+        animation.setAnimationListener(animationListener);
+        return animation;
+    }
+
+    private Animation initBlinkAnimation(){
+        AlphaAnimation animation = new AlphaAnimation(0f,1f);
+        animation.setDuration(300);
+        animation.setRepeatMode(Animation.REVERSE);
+        animation.setRepeatCount(3);
+        animation.setFillAfter(true);
+        animation.setAnimationListener(animationListener);
+        return animation;
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -92,21 +134,7 @@ public class MainActivity extends AppCompatActivity {
         findViewsByIds();
         initVariables();
 
-        //HandleClickAnimationXML
-        // load the animation
-        /*final Animation animation = AnimationUtils.loadAnimation(MainActivity.this,R.anim.anim_fade_in);
-
-        //set animation listener
-        animation.setAnimationListener(animationListener);
-
-        //Hanlde onClickListenner to start animation
-        btnFadeInXml.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-             ivUitLogo.startAnimation(animation);
-            }
-        });*/
-
+        // Bai tap 1
         handleClickAnimationXml(btnFadeInXml,R.anim.anim_fade_in);
         handleClickAnimationXml(btnFadeOutXml,R.anim.anim_fade_out);
         handleClickAnimationXml(btnBlinkXml,R.anim.anim_blink);
@@ -117,6 +145,11 @@ public class MainActivity extends AppCompatActivity {
         handleClickAnimationXml(btnSlideUpXml,R.anim.anim_slide_up);
         handleClickAnimationXml(btnBounceXml,R.anim.anim_bounce);
         handleClickAnimationXml(btnCombineXml,R.anim.anim_combine);
+
+        // Bai tap 2
+        handleClickAnimationCode(btnFadeInCode,initFadeInAnimation());
+        handleClickAnimationCode(btnFadeOutCode,initFadeOutAnimation());
+        handleClickAnimationCode(btnBlinkCode,initBlinkAnimation());
 
     }
 }

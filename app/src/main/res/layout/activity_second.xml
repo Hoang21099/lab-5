@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/purple_200"
+    tools:context=".Second">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6">
+        <ImageView
+            android:id="@+id/iv_uit_logo"
+            android:layout_width="@dimen/image_base"
+            android:layout_height="@dimen/image_base"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:src="@drawable/uit_logo"/>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back" />
+    </FrameLayout>
+
+</LinearLayout>

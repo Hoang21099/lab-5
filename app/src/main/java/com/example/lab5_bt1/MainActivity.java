@@ -1,6 +1,8 @@
 package com.example.lab5_bt1;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -131,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         findViewsByIds();
         initVariables();
 
@@ -150,6 +153,18 @@ public class MainActivity extends AppCompatActivity {
         handleClickAnimationCode(btnFadeInCode,initFadeInAnimation());
         handleClickAnimationCode(btnFadeOutCode,initFadeOutAnimation());
         handleClickAnimationCode(btnBlinkCode,initBlinkAnimation());
+
+        //Bai tap 3
+        final Intent changeActivity = new Intent(this, Second.class);
+        ivUitLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(changeActivity);
+                overridePendingTransition(R.anim.anim_left_to_right_in, R.anim.anim_right_to_left_in);
+
+            }
+        });
 
     }
 }
